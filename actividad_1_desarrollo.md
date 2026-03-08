@@ -17,15 +17,14 @@ Los requisitos funcionales se presentan en forma de historias de usuario con cri
 
 ### Historias de Usuario
 
-| ID | Historia de Usuario | Criterios de Aceptación | INVEST |
-|----|---------------------|------------------------|--------|
-| US-01 | Como cliente, quiero consultar el catálogo de productos con precio y disponibilidad, para decidir qué comprar. | 1. El sistema muestra nombre, precio y stock disponible.<br>2. Si un producto está agotado, debe mostrarse como “Sin disponibilidad”.<br>3. Tiempo de respuesta menor o igual a 300 ms en condiciones normales. | Cumple INVEST: independiente, valiosa, pequeña y testeable. |
-| US-02 | Como cliente, quiero realizar un pedido con pago simulado, para comprar productos seleccionados. | 1. Se genera un ID único de pedido.<br>2. El stock se descuenta automáticamente.<br>3. No se permite confirmar si no hay stock suficiente.<br>4. El estado inicial es “Aprobado”. | Cumple INVEST. Puede dividirse si aumenta su complejidad. |
-| US-03 | Como cliente, quiero consultar el estado de mi pedido, para saber en qué etapa se encuentra. | 1. Estados visibles: Aprobado, Empacado, En ruta, Entregado, Cancelado.<br>2. Actualización en máximo 30 segundos cuando esté en ruta.<br>3. Solo puede ver sus propios pedidos (validación por JWT). | Cumple INVEST. Clara y verificable. |
-| US-04 | Como administrador, quiero gestionar el inventario (crear, actualizar y ajustar stock), para mantener existencias correctas. | 1. Permite crear y editar productos.<br>2. No permite stock negativo.<br>3. Solo usuarios con rol ADMIN pueden acceder. | Cumple INVEST. |
-| US-05 | Como repartidor, quiero ver los pedidos asignados, para organizar mis entregas. | 1. Solo ve pedidos asignados a su usuario.<br>2. Puede cambiar estado a “En ruta” y “Entregado”.<br>3. Puede registrar novedades. | Cumple INVEST. |
-| US-06 | Como operador de entregas, quiero asignar pedidos a repartidores, para organizar las entregas eficientemente. | 1. Solo usuarios con rol OPERADOR pueden asignar.<br>2. El sistema registra fecha y hora de asignación.<br>3. El pedido cambia a estado “Asignado”. | Cumple INVEST. |
-
+| sitod | Historia                                                                                                                     | Criterios de aceptacion                                                                                                                                                                        | invest |
+|-------|------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|
+| US-01 | Como cliente, quiero poder hacer pedidos, para comprar los productos seleccionados                                           | 1- Debe genrar un id unico de pedido 2 - el stock de cada producto se descuenta 3 - No se puede haver un pedido con productos nos disponibles 4 - El estado inicial del producto es “aprobado” |        |
+| US-02 | Como cliente quiero poder consultar productos, con precio y disponibilidad                                                   | 1 - El sistema muestra nombre, precio y stock disponible 2 - Si un producto no tiene existencias se muestra fcomo “sin disponibilidad” 3 - tiempo de respuesta ≤ 300 ms                        |        |
+| US-03 | Como cliente quiero poder acceder a la informacion de mis pedido, saber donde esta, en que estado esta mi pedido.            | 1 - Se muestra el estado actual del producto(aprobado, Empacado, en ruta, entregado, cancelado) 2 - actualizacion de estado maximo cada 30s. 3 - Solo puede ver sus propios pedidos            |        |
+| US-04 | Como Administrador, quiero poder gentionar el inventario, añadir o desactivar productos, cambiar aspectos de los productos   | 1 - Solo usuarios con rol admin pueden acceder a editar (debe autenticarse por AWT tokens) 2 - Permite editar y crear productos con precio y cantidad 3 - No puede haber stock negativo        |        |
+| US-05 | Como repartidor quiero ver los productos que se me han asignado                                                              | 1 - se debe mostrar la informacion del pedido 2 - puede actualizar el estado del producto (en ruta o entregado) 3 - debe ver la direccion de entrega del pedido.                               |        |
+| US-06 | Como operador de enregas, quiero asignarle pedidos a reapartidores disponibles, para organizar las rutas de manera eficiente | 1 - El operador puede asignar pedidos 2 - Se registra la fecha y hora de asignacion 3 - El pedido cambia automaticamente a asignado.                                                           |        |
 ---
 
 ## 3. Requisitos de Calidad  
@@ -73,4 +72,5 @@ El sistema propuesto responde a las necesidades del negocio mediante una arquite
 - Seguridad robusta  
 - Observabilidad y trazabilidad  
 - Experiencia consistente para clientes, administración y reparto  
+
 
